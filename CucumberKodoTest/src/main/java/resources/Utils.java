@@ -17,7 +17,7 @@ public class Utils {
 	
 	public static String getElementAttribute(WebDriver driver, By ele,String attributeVal)
 	{
-		String retText = driver.findElement(ele).getAttribute("'"+attributeVal+"'");
+		String retText = driver.findElement(ele).getAttribute(attributeVal);
 		return retText;
 	}
 	
@@ -43,7 +43,7 @@ public class Utils {
 	public static void getSendKeys(WebDriver driver,By ele,String str)
 	{
 		try {
-			driver.findElement(ele).click();
+			driver.findElement(ele).sendKeys(str);
 		}
 		catch (Exception e)
 		{

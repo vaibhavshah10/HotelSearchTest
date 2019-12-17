@@ -37,7 +37,7 @@ public class HotelSearchTest {
 
 	@When("^I enter the check out date as \"([^\"]*)\"$")
 	public void i_enter_the_check_out_date_as(String arg1) throws Throwable {
-		Utils.waitImplicit(driver, 1);
+		Utils.waitImplicit(driver, 3);
 	    Utils.getElementClick(driver, HotelSearchUi.checkOutDate);
 	    Utils.getSendKeys(driver, HotelSearchUi.checkOutDate, arg1);
 	}
@@ -68,19 +68,19 @@ public class HotelSearchTest {
 	 {
 			Utils.getElementClick(driver, By.xpath("//*[@id='cookyGotItBtnBox']/div/button"));
 	 }
-	 Utils.waitImplicit(driver, 2);
-	 if(driver.findElement(By.xpath("//*[@id='livechat-eye-catcher']/div[1]")).isDisplayed())
-	 {
-			Utils.getElementClick(driver,By.xpath("//*[@id='livechat-eye-catcher']/div[1]"));
-	 }
-	 Utils.waitImplicit(driver, 1);
+	// Utils.waitImplicit(driver, 1);
+	// if(driver.findElement(By.xpath("//*[@id='livechat-eye-catcher-img']/div[1]")).isDisplayed())
+	// {
+	//		Utils.getElementClick(driver,By.xpath("//*[@id='livechat-eye-catcher']/div[1]"));
+	// }
+	// Utils.waitImplicit(driver, 1);
 	 Utils.getElementClick(driver, HotelSearchUi.cityTextBox);
 	 Utils.waitImplicit(driver, 1);
      Utils.getSendKeys(driver, HotelSearchUi.entercityTextBox, arg1);
 	 Utils.waitImplicit(driver, 1);
-	 Actions action = new Actions(driver);
-	 action.moveToElement(driver.findElement(By.xpath("//*[@id='livechat-eye-catcher-img']/img"))).build().perform();
-	 Utils.getElementClick(driver, By.xpath("//*[@id='livechat-eye-catcher']/div[1]"));
+	 //Actions action = new Actions(driver);
+	 //action.moveToElement(driver.findElement(By.xpath("//*[@id='livechat-eye-catcher-img']/img"))).build().perform();
+	 //Utils.getElementClick(driver, By.xpath("//*[@id='livechat-eye-catcher']/div[1]"));
 	 Utils.getElementClick(driver, HotelSearchUi.citySelect);
 	}
 	
@@ -95,21 +95,22 @@ public class HotelSearchTest {
 		Assert.assertTrue(driver.getCurrentUrl().contains("/search"));
 		Assert.assertEquals("Mumbai",Utils.getElementText(driver, By.xpath("//html/body/div[2]/div[1]/div/section/div/div[2]/div/div/div[1]/div[1]/h3/span[2]")));
 		Assert.assertEquals("MODIFY", Utils.getElementText(driver,By.xpath("//html/body/div[2]/div[1]/div/section/div/div[2]/div/div/div[1]/div[2]/button")));
+		Utils.getbrowserClose(driver);
 	}
 	
 	@When("^I add adult count while hotel search$")
 	public void i_add_adult_count_while_hotel_search() throws Throwable {
 		 Utils.waitImplicit(driver, 3);
 		driver.findElement(HotelSearchUi.adultBtn).click();
-		String temp = Utils.getElementAttribute(driver, By.xpath("//div[contains(@class,'input-group  bootstrap-touchspin bootstrap-touchspin-injected')]/input[contains(@class,'form-control touch-spin-03 form-readonly-control')]"), "value"); 
+		String temp = Utils.getElementAttribute(driver, By.xpath("//div[contains(@class,'input-group  bootstrap-touchspin bootstrap-touchspin-injected')]/input[contains(@class,'form-control touch-spin-03 form-readonly-control')]"), "value");
+		//String temp = driver.findElement(By.xpath("//div[contains(@class,'input-group  bootstrap-touchspin bootstrap-touchspin-injected')]/input[contains(@class,'form-control touch-spin-03 form-readonly-control')]")).getAttribute("value");
 		Assert.assertTrue(!temp.equals("0"));
 		Utils.waitImplicit(driver, 1);
-		Utils.getbrowserClose(driver);		
 	}
 	
 	@When("^I add child count while hotel search$")
 	public void i_add_child_count_while_hotel_search() throws Throwable {
-		 Utils.waitImplicit(driver, 3);
+		 Utils.waitImplicit(driver, 6);
 		driver.findElement(HotelSearchUi.childBtn).click();
 		String temp = Utils.getElementAttribute(driver, By.xpath("//div[contains(@class,'input-group  bootstrap-touchspin bootstrap-touchspin-injected')]/input[contains(@class,'form-control touch-spin-03 form-readonly-control')]"), "value");
 		Assert.assertTrue(!temp.equals("0"));
